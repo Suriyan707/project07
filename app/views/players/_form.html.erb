@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :team_id, style: "display: block" %>
-    <%= form.number_field :team_id %>
+    <%= form.collection_select :team_id, Team.all, :id, :name, include_blank: false, class: 'form-control' %>
   </div>
 
   <div>

@@ -1,14 +1,38 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[ show edit update destroy ]
 
-  # GET /players or /players.json
   def index
-    @players = Player.all
+    @players = Player.includes(:team).all
+    puts @players
+    puts params.inspect
+
+    if params[:team_id].present?
+      
+      @players = @players.where('players.team_id = ?', params[:team_id])
+    end
+
+    if params[:player_name].present?
+      @players = @players.where('players.name = ?', params[:player_name])
+    end
+
+    if params[:age_min].present? && params[:age_max].present?
+      @players = @players.where(age: params[:age_min]..params[:age_max])
+    elsif params[:age_min].present?
+      @players = @players.where('age >= ?', params[:age_min])
+    elsif params[:age_max].present?
+      @players = @players.where('age <= ?', params[:age_max])
+    end
   end
+
+  
+
+  # GET /players or /players.json
+  
 
   # GET /players/1 or /players/1.json
   def show
   end
+  
 
   # GET /players/new
   def new
@@ -67,4 +91,5 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:name, :age, :position, :team_id, :role, :is_captain, :is_active, :description)
     end
+    
 end
