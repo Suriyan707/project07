@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @teams = Team.new(params.require(:teams).permit(:name, :country, :founded, :description))
+        @teams = Team.new(params.require(:teams).permit(:name, :country, :founded, :player_count, :description))
         if @teams.save
              flash[:notice] = "created successfully"
              redirect_to @teams
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
 
     def update
         @teams = Team.find(params[:id])
-        if @teams.update(params.require(:article).permit(:name, :country, :founded, :description))
+        if @teams.update(params.require(:article).permit(:name, :country, :founded, :player_count, :description))
             flash[:notice] = "update successfully"
             redirect_to @teams
         else

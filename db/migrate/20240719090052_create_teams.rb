@@ -4,6 +4,7 @@ class CreateTeams < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :country
       t.integer :founded
+      t.integer :player_count
       t.text :description
 
       t.timestamps

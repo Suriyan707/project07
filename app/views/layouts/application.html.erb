@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project07</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+  <ul>
+  <% if user_signed_in? %>
+    <li>Hi, user</li>
+    <li>Sign Out</li>
+  <% else %>
+    <li>Sign In</li>
+    <li>Sign Up</li>
+  <% end %>
+</ul>
   </head>
 
   <body>
+   <%= render 'layouts/header' %>
+   
     <%= yield %>
+    <%= render 'layouts/footer' %>
+
   </body>
 </html>

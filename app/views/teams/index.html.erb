@@ -4,6 +4,7 @@
 <th>name</th>
 <th>country</th>
 <th>founded</th>
+<th>player_count</th>
 <th>description</th>
 <th>action</th>
 </thead>
@@ -22,15 +23,16 @@
 <%= team.founded %> 
 </td>
 <td>
+<%= team.player_count %> 
+</td>
+<td>
 <%= team.description %> 
 </td>
-
 <td>
 <%= link_to 'Show', team_path(team) %>
 <%= link_to 'Delete', team_path(team), method: :delete %>
 <%= link_to 'EDIT', model: @team, url: team_path(team), method: :patch%>
 </td>
-
 </tr>
 <% end %>
 </table>
