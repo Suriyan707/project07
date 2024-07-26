@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  devise_for :users
   resources :matches
   resources :players
   resources :teams, only: [:show, :index, :new, :create, :edit, :update, :destroy]

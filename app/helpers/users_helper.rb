@@ -1,4 +1,8 @@
 module UsersHelper
 
-    <li><%= "Hi, #{current_user.email}" %></li>
+    module UsersHelper
+        def greet_current_user
+          "Hi, #{current_user.email}"
+        end
+      end
 end
